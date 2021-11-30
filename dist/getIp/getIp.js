@@ -10,6 +10,7 @@ const lang = 'ru';
 const version = '2.5';
 let _ObjWeatherData;
 let _ipAddress;
+let _localCity;
 axios.get('http://ip-api.com/json')
     .then((response) => {
     console.log(response.data.query);
@@ -27,12 +28,14 @@ axios.get('http://ip-api.com/json')
         console.log(response);
         const { data } = response;
         const { main, weather } = data;
+        _localCity = data.name;
         _ObjWeatherData = {
             main: weather[0].main,
             description: weather[0].description,
             icon: weather[0].icon,
             temp: (parseInt(main.temp) - 273).toFixed(0).toString(),
-            ipAddress: _ipAddress
+            ipAddress: _ipAddress,
+            localCity: _localCity
         };
         (0, renderTimeWeather_1.default)(document.querySelector(".date_time_weather_wrapper"), _ObjWeatherData);
     });

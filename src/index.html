@@ -1,65 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
     <section class="welcome_section">
-      <div class="main_wrapper">      
-        <div class="headline welcome_user_home"><h2>Welcome , User</h2></div>
+      <div class="main_wrapper">
+        <div class="headline_welcome welcome_user_home"><h2>Welcome , User</h2></div>
         <div class="date_time_weather_wrapper">
-            <!-- RENDER TIME AND WEATHER -->
+          <!-- RENDER TIME AND WEATHER -->
         </div>
-          <div class="cards-info" data-aos="fade-up">
-
-            <!-- RENDER CARD SHORT INFO -->
-          </div>
-      
-        <div class="headline"><h2>Dashboard</h2></div>
-          
-  </div> 
+        <div class="cards-info" data-aos="fade-up">
+          <!-- RENDER CARD SHORT INFO -->
+        </div>
+      </div>
     </section>
 
-
-
-
-
-
-<!-- SECTION SYSTEM INFO-->    
-    <section >
+    <!-- SECTION SYSTEM INFO-->
+    <section>
       <div class="main_wrapper">
-
-          <div class="dashboard_innner">
-            <div class="wave-card">
-      
-              <div class="wave-card-shape"></div>
-              <div class="wave-card-shape"></div>
-              <div class="wave-card-shape"></div>
-        
-              
-            </div>
-            <div class="wave-card">
-          
-              <div class="wave-card-shape"></div>
-              <div class="wave-card-shape"></div>
-              <div class="wave-card-shape"></div>
-        
-              
-            </div>
-            <div class="wave-card">
-          
-              <div class="wave-card-shape"></div>
-              <div class="wave-card-shape"></div>
-              <div class="wave-card-shape"></div>
-        
-              
-            </div>
+        <div class="headline_dashboard"><h2>Dashboard</h2></div>
+        <div class="dashboard_innner">
+          <div class="wave-card">
+            <div class="wave-card-shape shape1"></div>
+            <div class="wave-card-shape shape1"></div>
+            <div class="wave-card-shape shape1"></div>
+            <div class="text__wave_card">System</div>
           </div>
+          <div class="wave-card">
+            <div class="wave-card-shape shape2"></div>
+            <div class="wave-card-shape shape2"></div>
+            <div class="wave-card-shape shape2"></div>
+            <div class="text__wave_card ">Optimisation</div>
+          </div>
+          <div class="wave-card">
+            <div class="wave-card-shape shape3"></div>
+            <div class="wave-card-shape shape3"></div>
+            <div class="wave-card-shape shape3"></div>
+            <div class="text__wave_card">Another</div>
+          </div>
+        </div>
       </div>
-
     </section>
 
     <!-- <div class="wrapper_os_data" data-aos="fade-up">
@@ -89,10 +73,12 @@
  
     </div>
       <canvas id="chart"></canvas> -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" ></script>
-    <script>
-        require("../dist/osManipulation/os.js")
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../dist/speech.js" type="module"></script>
+    <script src="artyom.window.min.js"></script>
 
+    <script>
+      require("../dist/osManipulation/os.js");
     </script>
   </body>
 </html>

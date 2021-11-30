@@ -2,6 +2,7 @@ import OSController from "./OScontroller";
 import "./../animation_ts/cardItem";
 import "./../render/renderCards";
 import "./../getIp/getIp"
+
 import { getInfoTempFiles, MB, GB , KB } from "../fs_path/getTempFiles";
 
 
@@ -139,3 +140,4 @@ document.querySelector(".cards-info").addEventListener('wheel', (evt:any) => {
 
 //     addData(chart,"CPU usage",data.push(osController.getCPUPercent()))
 // },2000)
+

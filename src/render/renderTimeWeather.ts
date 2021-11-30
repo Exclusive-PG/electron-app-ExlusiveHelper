@@ -9,7 +9,7 @@ const renderWeatherAndTime = (innerRender:HTMLDivElement,objWeather:IWeather):vo
             <div class="icon_w" ><img src="http://openweathermap.org/img/wn/${objWeather.icon}@2x.png"/></div>
             <div class="temp_w">${objWeather.temp} &deg; </div>
             <div class="descr_w">&nbsp;${objWeather.description} </div>
-            
+            <div class="city_w">${objWeather.localCity} </div>
            
         </div>
     `

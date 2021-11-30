@@ -27,16 +27,19 @@ export interface IWeather{
         icon :string
         temp: string
         ipAddress:string
+        localCity:string
 }
 
 let _ObjWeatherData:IWeather
 let _ipAddress:string ;
+let _localCity : string ;
 
 axios.get('http://ip-api.com/json')
   .then( (response:ResponseIP) =>{
     
     console.log(response.data.query);
     _ipAddress = response.data.query;
+   
     return response;
   })
   .catch(function (error:Error) {
@@ -52,12 +55,15 @@ axios.get('http://ip-api.com/json')
         const {data} = response;
         const {main,weather} = data;
         
+        _localCity = data.name
+        
          _ObjWeatherData = {
         main : weather[0].main,
         description:weather[0].description,
         icon : weather[0].icon,
         temp:(parseInt(main.temp) - 273).toFixed(0).toString(),
-        ipAddress:_ipAddress
+        ipAddress:_ipAddress,
+        localCity : _localCity
         }
         
         renderWeatherAndTime(document.querySelector<HTMLDivElement>(".date_time_weather_wrapper"),_ObjWeatherData)

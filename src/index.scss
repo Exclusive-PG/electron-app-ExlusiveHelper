@@ -1,4 +1,4 @@
-
+@import "./assets/styles/dashboard.scss";
 
 *{
 
@@ -14,8 +14,15 @@
   margin: 0 auto;
 }
 body{
-  background: #643a7a;
+ // background: #611F69;
+ background-image: url("./assets/images/background.png");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+padding: 0;
+margin: 0;
 }
+   
 .wrapper_os_data{
   display: flex;
   justify-content: center;
@@ -23,9 +30,9 @@ body{
   //background: linear-gradient(145deg, #413951 0%, #201c29 100%);
   padding: 100px 0;
 }
-section{
+.welcome_section{
   widows: 100vw;
-  background: linear-gradient(145deg, #413951 0%, #201c29 100%);
+ // background: linear-gradient(145deg, #413951 0%, #201c29 100%);
 }
 /* .frame {
   position: absolute;
@@ -100,10 +107,12 @@ section{
   font-size: 14px;
 }
 
-.headline h2 {
-  color: #fff;
-  padding: 10px 0;
-}
+.headline_welcome ,.headline_dashboard  {
+  color: #fff ;
+  padding: 40px 0;
+} 
+
+
 
 .cards-info{
   padding: 50px 0 100px 0;
@@ -133,6 +142,8 @@ section{
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         overflow: hidden;
      
+
+        
         .backgrond_anim{
           width: 100%;
           height: 100%;
@@ -205,73 +216,6 @@ section{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////WAVES_CARDS
-$wave-bg : #ffd600;
-.wave-card {
-  width : 250px;
-  height : 300px;
-
-  position : relative;
-  box-shadow: 11px 17px 48px #e5e5e5;
-  border-radius : 10px;
-  overflow : hidden;
-  
-  &-shape {
-    position : absolute;
-    width : 400px;
-    height : 400px;
-    z-index : 1;
-    opacity : 0.6;
-    top : -250px;
-    left : -100px;
-    border-radius : 150px;
-    background: $wave-bg;
-    animation : rotate 30s linear infinite;
-  }
-  &-shape:nth-child(1) {
-    top : -245px;
-    left : -98px;
-    opacity : 0.4;
-    z-index : 2;
-    animation : rotate 25s linear infinite;
-  }
-  &-shape:nth-child(2) {
-    top : -240px;
-    opacity : 0.3;
-    z-index : 3;
-    animation : rotate 32s linear infinite;
-  }
-  &-title {
-   
-  }
-   &-subtitle {
-    margin-bottom : 30px;
-  }
-}
-@keyframes rotate {
-  from {
-     transform : rotate(0)
-  }
-  to {
-    transform : rotate(1turn);
-  }
-}
-
-
 ///////WEATHER
 // .date_time_weather_wrapper{
 //   display: grid;
@@ -281,35 +225,40 @@ $wave-bg : #ffd600;
   display: grid;
   color: #fff;
   font-weight: bold;
+  grid-gap: 0;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
   grid-template-areas: 
-  "icon_w temp_w descr_w ";
-  // "temp_w ipAddress_w";
+  "icon temp descr "
+  ". city city ";
+  
     justify-content: right;
     align-items: center;
 
     .temp_w{
-     
+     grid-area: temp;
       text-align: center;
+    }
+    .icon_w{
+      grid-area: icon;
     }
     .descr_w::first-letter{
       text-transform: uppercase;
     }
+    .city_w{
+       grid-area: city;
+       align-self: top;
+      text-align: center;
+
+    }
+
+    .descr_w{
+      grid-area: descr;
+    }
 
    
+    
 }
-
-@keyframes pulse{
-  0%{
-    transform: scale(1);
-  }
-  50%{
-    transform: scale(1.1);
-  }
-  100%{
-    transform: scale(1);
-  }
-}
-
 
 
 
@@ -393,13 +342,3 @@ $wave-bg : #ffd600;
 
 
 
-
-  //////DASHBOARD
-.dashboard_innner{
-  padding: 200px 0;
-  display: grid;
-  grid-gap: 30px;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(3,1fr);
-}

@@ -63,6 +63,7 @@
   "dependencies": {
     "@types/node": "^16.11.9",
     "aos": "^2.3.4",
+    "artyom.js": "^1.0.6",
     "axios": "^0.24.0",
     "chart.js": "^3.6.0",
     "electron-squirrel-startup": "^1.0.0",
