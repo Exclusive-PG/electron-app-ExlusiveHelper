@@ -1,6 +1,6 @@
 {
   "name": "exclusive-helepr",
-  "productName": "ExclusiveHelper",
+  "productName": "Exclusive Helper",
   "version": "1.0.0",
   "description": "Electron application - ExclusiveHelper",
   "main": "dist/index.js",

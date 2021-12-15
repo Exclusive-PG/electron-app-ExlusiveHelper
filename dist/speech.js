@@ -5,7 +5,7 @@ speech.initialize({
     lang: "ru-RU",
     continuous: true,
     listen: true,
-    debug: true,
+    debug: false,
     speed: 1 // talk normally
 }).then(function () {
     setTimeout(() => {

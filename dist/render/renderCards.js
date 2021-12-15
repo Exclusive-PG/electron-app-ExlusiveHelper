@@ -1,50 +1,24 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.networkInterfaces = exports.memLayoutData = exports.graphicsData = exports.cpuData = void 0;
+exports.os = void 0;
 const cardItem_1 = require("./../animation_ts/cardItem");
 const aos_1 = __importDefault(require("aos"));
+const OScontroller_1 = __importDefault(require("./../osManipulation/OScontroller"));
 const si = require('systeminformation');
 let array = [];
-si.graphics().then((data) => {
-    console.log(data);
-});
-si.memLayout().then((data) => {
-    console.log(data);
-});
-si.cpu().then((data) => {
-    console.log(data);
-});
-function getData() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            exports.cpuData = yield si.cpu();
-            exports.graphicsData = yield si.graphics();
-            exports.memLayoutData = yield si.memLayout();
-            exports.networkInterfaces = yield si.networkInterfaces();
-            console.log(exports.networkInterfaces);
-        }
-        catch (e) {
-            console.log(e);
-        }
-    });
-}
-getData().then(() => {
-    array.push({ MainLabel: "Graphics", subLabel: "Name:" + exports.graphicsData.controllers[0].name, asideLabel: `TotalMemory:${exports.graphicsData.controllers[0].memoryTotal.toString()}` });
-    array.push({ MainLabel: "CPU", subLabel: "Brand:" + exports.cpuData.brand, asideLabel: `Cores:${exports.cpuData.cores.toString()}` });
-    array.push({ MainLabel: "RAM", subLabel: (exports.memLayoutData[0].size / 1024 / 1024).toString() + " MB", asideLabel: exports.memLayoutData[0].type });
-    array.push({ MainLabel: "Ethernet", subLabel: exports.networkInterfaces[0].ip4, asideLabel: exports.networkInterfaces[0].ifaceName });
+exports.os = new OScontroller_1.default();
+let pathToImages = "assets/images/";
+exports.os.getData().then(() => {
+    array.push({ MainLabel: "Videocard", subLabel: "Name:" + exports.os.graphicsData.controllers[0].name, asideLabel: `Total Memory:${(exports.os.graphicsData.controllers[0].memoryTotal / 1024).toString()} GB`, imageData: `${pathToImages}videocard.png ` });
+    array.push({ MainLabel: "CPU", subLabel: "Brand:" + exports.os.cpuData.brand, asideLabel: `Cores:${exports.os.cpuData.cores.toString()}`, imageData: `${pathToImages}cpu.png ` });
+    array.push({ MainLabel: "RAM", subLabel: `Total Memory : ${(exports.os.memLayoutData[0].size / 1024 / 1024 / 1024).toString()}` + " GB", asideLabel: `SDRAM : ${exports.os.memLayoutData[0].type}`, imageData: `${pathToImages}ram.png ` });
+    if (exports.os.wifiConnections.length !== 0) {
+        array.push({ MainLabel: "Wifi", subLabel: exports.os.networkInterfaces[0].ip4, asideLabel: exports.os.networkInterfaces[0].ifaceName, imageData: `${pathToImages}wifi.png ` });
+    }
+    array.push({ MainLabel: "Network", subLabel: `MAC : ${exports.os.networkInterfaces[0].mac}`, asideLabel: exports.os.networkInterfaces[0].ifaceName, imageData: `${pathToImages}network.png ` });
     renderCards(document.querySelector(".cards-info"), array);
     (0, cardItem_1.hoverCardEffect)();
 });
@@ -58,6 +32,7 @@ const renderCards = (innerRender, arrayCards) => {
             <div class="MainLabel">${item.MainLabel}</div>
             <div class="subLabel">${item.subLabel}</div>
             <div class="asideLabel">${item.asideLabel}</div>
+            <div class="images"><img alt =${item.MainLabel} src=${item.imageData}/></div>
         </div>
         </div>`;
     });

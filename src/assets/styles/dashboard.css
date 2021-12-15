@@ -14,6 +14,10 @@
       grid-template-columns: repeat(3, 1fr);
 }
 
+.dashboardSection {
+  padding-bottom: 250px;
+}
+
 .wave-card {
   width: 250px;
   height: 300px;

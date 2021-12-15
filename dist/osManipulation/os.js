@@ -3,10 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.drawCircle = void 0;
 const OScontroller_1 = __importDefault(require("./OScontroller"));
 require("./../animation_ts/cardItem");
 require("./../render/renderCards");
 require("./../getIp/getIp");
+require("./../nav-script/navscript");
 const fs = require("fs");
 const gpuInfo = require('gpu-info');
 gpuInfo().then(function (data) {
@@ -30,7 +32,7 @@ gpuInfo().then(function (data) {
 //                arrayData.push(data);
 //             })
 const osController = new OScontroller_1.default();
-const circleCPUsage = document.querySelector(".cpu_usage");
+//const circleCPUsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".cpu_usage");
 const circleRAMsage = document.querySelector(".memory_usage");
 const drawCircle = (percent, circleElem, elementInput) => {
     try {
@@ -43,6 +45,7 @@ const drawCircle = (percent, circleElem, elementInput) => {
         console.log(err.message);
     }
 };
+exports.drawCircle = drawCircle;
 // setInterval(()=>{
 //             drawCircle(osController.getCPUPercent(),circleCPUsage, document.querySelector(".data_cpu_usage"));
 //             drawCircle(osController.getRamPercent(),circleRAMsage, document.querySelector(".data_free_mem"));

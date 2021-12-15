@@ -3,66 +3,37 @@ import { hoverCardEffect } from './../animation_ts/cardItem';
 
 import AOS from 'aos';
 
+import OSController from './../osManipulation/OScontroller';
+
 const si = require('systeminformation');
 
 
 interface cardI{
     MainLabel:string,
     subLabel : string,
-    asideLabel :string
+    asideLabel :string,
+    imageData :string
 }
 
 
 let array:Array<cardI> = [];
 
-si.graphics().then((data:any)=>{
-    console.log(data);
-  
-})
 
-si.memLayout().then((data:any)=>{
-console.log(data);
+export let os = new OSController();
 
-})
-si.cpu().then((data:any)=>{
-console.log(data);
-
-})
-
-export let 
-cpuData:any , 
-graphicsData:any,
-memLayoutData:any,
-networkInterfaces:any
-
-
-async function getData() {
+let pathToImages = "assets/images/";
+os.getData().then(()=>{
+    
+    array.push({MainLabel:"Videocard",subLabel:"Name:"+os.graphicsData.controllers[0].name,asideLabel:`Total Memory:${(os.graphicsData.controllers[0].memoryTotal/1024).toString()} GB`,imageData:`${pathToImages}videocard.png `})
    
+    array.push({MainLabel:"CPU",subLabel:"Brand:"+os.cpuData.brand,asideLabel:`Cores:${os.cpuData.cores.toString()}`,imageData:`${pathToImages}cpu.png `})
 
-    try {
-         cpuData = await si.cpu();
-      
-         graphicsData = await si.graphics();
-        
-         memLayoutData = await si.memLayout();
-        
-         networkInterfaces = await si.networkInterfaces()
-         console.log(networkInterfaces)
-    } catch (e) {
-        console.log(e)
+    array.push({MainLabel:"RAM",subLabel:`Total Memory : ${(os.memLayoutData[0].size/1024/1024/1024).toString()}` + " GB",asideLabel:`SDRAM : ${os.memLayoutData[0].type}`,imageData:`${pathToImages}ram.png `})
+
+    if(os.wifiConnections.length !== 0){
+    array.push({MainLabel:"Wifi",subLabel:os.networkInterfaces[0].ip4,asideLabel:os.networkInterfaces[0].ifaceName,imageData:`${pathToImages}wifi.png `})
     }
-}
-
-getData().then(()=>{
-    
-    array.push({MainLabel:"Graphics",subLabel:"Name:"+graphicsData.controllers[0].name,asideLabel:`TotalMemory:${graphicsData.controllers[0].memoryTotal.toString()}`})
-   
-    array.push({MainLabel:"CPU",subLabel:"Brand:"+cpuData.brand,asideLabel:`Cores:${cpuData.cores.toString()}`})
-
-    array.push({MainLabel:"RAM",subLabel:(memLayoutData[0].size/1024/1024).toString() + " MB",asideLabel:memLayoutData[0].type})
-    
-    array.push({MainLabel:"Ethernet",subLabel:networkInterfaces[0].ip4,asideLabel:networkInterfaces[0].ifaceName})
-
+    array.push({MainLabel:"Network",subLabel:`MAC : ${os.networkInterfaces[0].mac}`,asideLabel:os.networkInterfaces[0].ifaceName,imageData:`${pathToImages}network.png `})
 
     renderCards(document.querySelector<HTMLDivElement>(".cards-info"),array);
     hoverCardEffect();
@@ -80,6 +51,7 @@ const renderCards = (innerRender:HTMLDivElement,arrayCards:Array<any>):void=>{
             <div class="MainLabel">${item.MainLabel}</div>
             <div class="subLabel">${item.subLabel}</div>
             <div class="asideLabel">${item.asideLabel}</div>
+            <div class="images"><img alt =${item.MainLabel} src=${item.imageData}/></div>
         </div>
         </div>`
     })

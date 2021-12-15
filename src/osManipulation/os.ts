@@ -2,7 +2,7 @@ import OSController from "./OScontroller";
 import "./../animation_ts/cardItem";
 import "./../render/renderCards";
 import "./../getIp/getIp"
-
+import "./../nav-script/navscript"
 import { getInfoTempFiles, MB, GB , KB } from "../fs_path/getTempFiles";
 
 
@@ -43,13 +43,13 @@ gpuInfo().then(function(data:any) {
 
 
 
-const osController = new OSController();
+ const osController = new OSController();
 
-const circleCPUsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".cpu_usage");
+ //const circleCPUsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".cpu_usage");
 const circleRAMsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".memory_usage");
 
 
-const drawCircle = (percent:number,circleElem:SVGCircleElement,elementInput:HTMLDivElement) =>{
+export const drawCircle = (percent:number,circleElem:SVGCircleElement,elementInput:HTMLDivElement) =>{
 try{
     let circumference = 2 * Math.PI * circleElem.r.baseVal.value;
     elementInput.innerHTML = `${(percent).toFixed(2)} %`;
