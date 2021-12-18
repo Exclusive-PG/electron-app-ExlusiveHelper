@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.drawCircle = void 0;
+exports.drawCircle = exports.osController = void 0;
 const OScontroller_1 = __importDefault(require("./OScontroller"));
 require("./../animation_ts/cardItem");
 require("./../render/renderCards");
@@ -31,7 +31,7 @@ gpuInfo().then(function (data) {
 //                document.querySelector<HTMLDivElement>(".item_4").innerHTML = `${data} bytes`;
 //                arrayData.push(data);
 //             })
-const osController = new OScontroller_1.default();
+exports.osController = new OScontroller_1.default();
 //const circleCPUsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".cpu_usage");
 const circleRAMsage = document.querySelector(".memory_usage");
 const drawCircle = (percent, circleElem, elementInput) => {
@@ -62,7 +62,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //})
 });
 window.addEventListener("load", () => {
-    document.querySelector(".welcome_user_home").innerHTML = `<h2>Welcome , ${osController.getUserInfo().username}</h2>`;
+    document.querySelector(".welcome_user_home").innerHTML = `<h2>Welcome , ${exports.osController.getUserInfo().username}</h2>`;
 });
 document.querySelector(".cards-info").addEventListener('wheel', (evt) => {
     evt.preventDefault();

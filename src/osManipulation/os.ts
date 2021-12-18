@@ -43,7 +43,7 @@ gpuInfo().then(function(data:any) {
 
 
 
- const osController = new OSController();
+export const osController = new OSController();
 
  //const circleCPUsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".cpu_usage");
 const circleRAMsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".memory_usage");

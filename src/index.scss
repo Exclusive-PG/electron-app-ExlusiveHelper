@@ -19,6 +19,8 @@
 
 
 
+
+
 body{
  // background: #611F69;
  background-image: url("./assets/images/background.png");
@@ -206,6 +208,7 @@ margin: 0;
 }
 
 
+
 .text_item{
   font-family: 'Sora', sans-serif !important;
 }
@@ -323,6 +326,7 @@ background: #F8463E;
 }
 
 
+
 .cpu_data,.card-body{
   color: #000 !important;
 }
@@ -361,8 +365,8 @@ background: #F8463E;
   font-weight: bold;
   color: #fff;
   font-size: 20px;
+  margin-top: 20px;
 }
-
 
 
 
@@ -376,6 +380,14 @@ background: #F8463E;
 
 
 
+
+.wrapper_detail_info{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}    
 
 
 
