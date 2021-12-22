@@ -117,7 +117,7 @@ export default class OSController{
 
             {data:this.graphicsData,isNotEmpty:this.graphicsData !== null ? true : false,Label:"Graphics",data_key:"Graphics"},
 
-            {data:this.memLayoutData,isNotEmpty:this.memLayoutData.length !== 0 ? true : false,Label:"Memory/RAM",data_key:"Memory/RAM"},
+            {data:this.memLayoutData,isNotEmpty:this.memLayoutData.length !== 0 ? true : false,Label:"Memory/RAM",data_key:"Ram"},
 
             {data:this.networkInterfaces,isNotEmpty:this.networkInterfaces.length !== 0 ? true : false,Label:"Network",data_key:"Network"},
 

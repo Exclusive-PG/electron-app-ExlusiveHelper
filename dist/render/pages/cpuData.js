@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderCPUdata = void 0;
+exports.updateCircle = exports.renderCPUdata = void 0;
 const renderCards_1 = require("../renderCards");
 const os_1 = require("./../../osManipulation/os");
 const randomColor = ["#ffd600", "#F436BC", "#EE2D35"];
@@ -80,7 +80,7 @@ const renderCPUdata = (innerDiv) => {
         </div>
                 <svg>
                 <circle class="bg"cx="105" cy="105" r="100"></circle>
-                <circle class=" cpu_usage" cx="109" cy="105" r="100" ></circle>
+                <circle class="cpu_usage" cx="109" cy="105" r="100" ></circle>
                 </svg>
         
     </div>   
@@ -93,15 +93,21 @@ const renderCPUdata = (innerDiv) => {
     </div>
     </div>
     `;
+    updateCircle(".cpu_usage", document.querySelector(".data_cpu_usage"), () => os_1.osController.getCPUPercent(), 2000);
+};
+exports.renderCPUdata = renderCPUdata;
+function updateCircle(CircleElement, elementInput, callback, intervalUpdate) {
     let isReadyToUpdate;
-    const circleCPUsage = document.querySelector(".cpu_usage");
+    let circle = document.querySelector(`${CircleElement}`);
+    circle.style.stroke = `${randomColor[Math.floor(Math.random() * randomColor.length)]}`;
+    //
     isReadyToUpdate = setInterval(() => {
         try {
-            if (!document.querySelector(".cpu_usage")) {
+            if (!document.querySelector(`${CircleElement}`)) {
                 clearInterval(isReadyToUpdate);
                 console.log("stop update");
             }
-            (0, os_1.drawCircle)(os_1.osController.getCPUPercent(), circleCPUsage, document.querySelector(".data_cpu_usage"));
+            (0, os_1.drawCircle)(callback(), circle, elementInput);
             console.log("update");
         }
         catch (e) {
@@ -109,7 +115,7 @@ const renderCPUdata = (innerDiv) => {
             clearInterval(isReadyToUpdate);
             console.log("stop update");
         }
-    }, 2000);
-};
-exports.renderCPUdata = renderCPUdata;
+    }, intervalUpdate);
+}
+exports.updateCircle = updateCircle;
 //# sourceMappingURL=cpuData.js.map

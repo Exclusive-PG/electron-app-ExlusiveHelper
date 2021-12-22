@@ -5,6 +5,8 @@ const RenderContent = document.querySelector(".cardsRenderComponent");
 const renderCards_1 = require("./renderCards");
 const cpuData_1 = require("./pages/cpuData");
 const gpuData_1 = require("./pages/gpuData");
+const ramData_1 = require("./pages/ramData");
+const NetworkData_1 = require("./pages/NetworkData");
 const renderSystemPage = () => {
     let stringCard = '';
     let NameNodeCards = "card-system-all";
@@ -54,6 +56,12 @@ const enableLinkDataCards = (NodesItem) => {
                         break;
                     case "graphics":
                         checkRenderedSection(tempKey, () => (0, gpuData_1.renderGPUdata)(document.querySelector(".renderCurrentData")));
+                        break;
+                    case "ram":
+                        checkRenderedSection(tempKey, () => (0, ramData_1.renderRAMdata)(document.querySelector(".renderCurrentData")));
+                        break;
+                    case "network":
+                        checkRenderedSection(tempKey, () => (0, NetworkData_1.renderNetworkData)(document.querySelector(".renderCurrentData")));
                         break;
                 }
                 document.querySelector(".items_content").style.transform = `translateX(-100%)`;

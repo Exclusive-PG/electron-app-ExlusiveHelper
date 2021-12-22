@@ -193,4 +193,31 @@
 .data_memory .progress {
   max-width: 50%;
 }
+
+.render_data_ram {
+  padding-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.render_data_ram_text {
+  margin-left: 250px;
+  font-size: 20px;
+}
+
+.render_data_circle_usage_mem {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
 /*# sourceMappingURL=renderField.css.map */

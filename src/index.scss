@@ -327,6 +327,7 @@ background: #F8463E;
 
 
 
+
 .cpu_data,.card-body{
   color: #000 !important;
 }
@@ -339,14 +340,14 @@ background: #F8463E;
 //     margin-bottom: 20px;
 //   }
 // }
-.content_cores{
+.content_cores , .content_network{
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
 
-.content_cores{
+.content_cores ,.content_network{
   color: #fff;
   max-width: 80%;
   margin: 20px 0 ;
@@ -355,6 +356,8 @@ background: #F8463E;
       color: #fff;
     }
 }
+
+
 
 .BackRenderTempData{
   margin: 10px;

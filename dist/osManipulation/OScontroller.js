@@ -66,7 +66,7 @@ class OSController {
             this.ArrayAll = [
                 { data: this.cpuData, isNotEmpty: this.cpuData !== null ? true : false, Label: "CPU", data_key: "CPU" },
                 { data: this.graphicsData, isNotEmpty: this.graphicsData !== null ? true : false, Label: "Graphics", data_key: "Graphics" },
-                { data: this.memLayoutData, isNotEmpty: this.memLayoutData.length !== 0 ? true : false, Label: "Memory/RAM", data_key: "Memory/RAM" },
+                { data: this.memLayoutData, isNotEmpty: this.memLayoutData.length !== 0 ? true : false, Label: "Memory/RAM", data_key: "Ram" },
                 { data: this.networkInterfaces, isNotEmpty: this.networkInterfaces.length !== 0 ? true : false, Label: "Network", data_key: "Network" },
                 { data: this.wifiConnections, isNotEmpty: this.wifiConnections.length !== 0 ? true : false, Label: "Wifi", data_key: "Wifi" },
                 { data: this.systemInfo, isNotEmpty: this.systemInfo !== null ? true : false, Label: "System", data_key: "System" },

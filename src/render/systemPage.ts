@@ -3,6 +3,8 @@ import OSController, { IitemArrayInfo } from './../osManipulation/OScontroller';
 import { os } from './renderCards';
 import { renderCPUdata } from './pages/cpuData';
 import { renderGPUdata } from './pages/gpuData';
+import { renderRAMdata } from './pages/ramData';
+import { renderNetworkData } from './pages/NetworkData';
 
 
 
@@ -65,14 +67,23 @@ export const enableLinkDataCards = (NodesItem:NodeListOf<HTMLDivElement>) =>{
                     console.log(tempKey);
 
                     switch(tempKey){
-                        case "cpu":
-                           
-                            checkRenderedSection(tempKey, ()=>renderCPUdata(document.querySelector(".renderCurrentData")));
-                           
-                            break;
+                        case "cpu":                   
+                            checkRenderedSection(tempKey, ()=>renderCPUdata(document.querySelector(".renderCurrentData"))); 
+                        break;
+                            
                         case "graphics" :
                             checkRenderedSection(tempKey, ()=>renderGPUdata(document.querySelector(".renderCurrentData")));
                         break;
+
+                        case "ram":
+                            checkRenderedSection(tempKey, ()=>renderRAMdata(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        case "network" : 
+                            checkRenderedSection(tempKey,()=>renderNetworkData(document.querySelector(".renderCurrentData")));
+                        break;
+
+
                     }
 
                     

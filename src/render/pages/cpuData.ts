@@ -92,7 +92,7 @@ osModule.cpus().forEach((item:any,index:number) => {
         </div>
                 <svg>
                 <circle class="bg"cx="105" cy="105" r="100"></circle>
-                <circle class=" cpu_usage" cx="109" cy="105" r="100" ></circle>
+                <circle class="cpu_usage" cx="109" cy="105" r="100" ></circle>
                 </svg>
         
     </div>   
@@ -105,17 +105,28 @@ osModule.cpus().forEach((item:any,index:number) => {
     </div>
     </div>
     `
-let isReadyToUpdate : NodeJS.Timeout ;
 
-const circleCPUsage:SVGCircleElement = document.querySelector<SVGCircleElement> (".cpu_usage");
+    updateCircle(".cpu_usage",document.querySelector(".data_cpu_usage"),()=>osController.getCPUPercent(),2000);
+}
+
+export function updateCircle(CircleElement:string,elementInput:HTMLDivElement,callback:any,intervalUpdate:number){
+    let isReadyToUpdate : NodeJS.Timeout ;
+    let circle = document.querySelector<SVGCircleElement>(`${CircleElement}`);
+    circle.style.stroke = `${randomColor[Math.floor(Math.random()*randomColor.length)]}`;
+//
+
 
 isReadyToUpdate = setInterval(()=>{
     try{
-        if(!document.querySelector<SVGCircleElement> (".cpu_usage")){
+   
+     
+
+        if(!document.querySelector<SVGCircleElement>(`${CircleElement}`)){
             clearInterval(isReadyToUpdate)
              console.log("stop update")
         }
-            drawCircle(osController.getCPUPercent(),circleCPUsage, document.querySelector(".data_cpu_usage"));
+            
+            drawCircle(callback(),circle,elementInput);
             console.log("update")
    
         }catch(e){
@@ -124,6 +135,5 @@ isReadyToUpdate = setInterval(()=>{
         console.log("stop update")
     }    
 
-    },2000);
-
+    },intervalUpdate);
 }
