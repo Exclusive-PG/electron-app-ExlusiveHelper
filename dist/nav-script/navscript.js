@@ -1,8 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const systemPage_1 = require("../render/systemPage");
+const optimisationPage_1 = require("./../render/optimisationPage");
 const lengthCards = document.querySelectorAll(".wave-card").length;
 const NodeListCards = document.querySelectorAll(".wave-card");
+const checkRenderedPage = (currentData, item, callback) => {
+    if (currentData !== item.getAttribute("data-card-nav")) {
+        currentData = item.getAttribute("data-card-nav");
+        getActiveSystemPage();
+        callback();
+    }
+    else {
+        getActiveSystemPage();
+        return;
+    }
+};
 NodeListCards.forEach((item) => {
     let currentData = '';
     item.addEventListener("click", () => {
@@ -10,15 +22,10 @@ NodeListCards.forEach((item) => {
             //  console.log(item.getAttribute("data-card-nav"))
             switch (item.getAttribute("data-card-nav")) {
                 case "system":
-                    if (currentData !== item.getAttribute("data-card-nav")) {
-                        currentData = item.getAttribute("data-card-nav");
-                        getActiveSystemPage();
-                        (0, systemPage_1.renderSystemPage)();
-                    }
-                    else {
-                        getActiveSystemPage();
-                        return;
-                    }
+                    checkRenderedPage(currentData, item, () => (0, systemPage_1.renderSystemPage)());
+                    break;
+                case "optimisation":
+                    checkRenderedPage(currentData, item, () => (0, optimisationPage_1.renderoptimisationPage)());
                     break;
             }
             (0, systemPage_1.enableLinkDataCards)(document.querySelectorAll(`.card-system-all`));

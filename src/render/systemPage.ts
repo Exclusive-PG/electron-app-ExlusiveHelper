@@ -5,6 +5,14 @@ import { renderCPUdata } from './pages/cpuData';
 import { renderGPUdata } from './pages/gpuData';
 import { renderRAMdata } from './pages/ramData';
 import { renderNetworkData } from './pages/NetworkData';
+import { renderSystemData } from './pages/systemData';
+import { renderFSData } from './pages/diskData';
+import { renderPrinterData } from './pages/printerData';
+import { renderAudioData } from './pages/audioData';
+import { renderBluetoothData } from './pages/bluetoothData';
+import { renderWifiData } from './pages/wifiData';
+import { renderUsbData } from './pages/usbData';
+import { renderBatteryData } from './pages/batteryData';
 
 
 
@@ -82,8 +90,41 @@ export const enableLinkDataCards = (NodesItem:NodeListOf<HTMLDivElement>) =>{
                         case "network" : 
                             checkRenderedSection(tempKey,()=>renderNetworkData(document.querySelector(".renderCurrentData")));
                         break;
+                        
+                        case "system":
+                            checkRenderedSection(tempKey,()=>renderSystemData(document.querySelector(".renderCurrentData")));
+                        break;
 
+                        case "fs":
+                            checkRenderedSection(tempKey,()=>renderFSData(document.querySelector(".renderCurrentData")));
+                        break;
 
+                        case "printer":
+                            checkRenderedSection(tempKey,()=>renderPrinterData(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        case "audio":
+                            checkRenderedSection(tempKey,()=>renderAudioData(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        case "bluetooth":
+                            checkRenderedSection(tempKey,()=>renderBluetoothData(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        case "wifi":
+                            checkRenderedSection(tempKey,()=>renderWifiData(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        case "usb":
+                            checkRenderedSection(tempKey,()=>renderUsbData(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        case "battery":
+                            checkRenderedSection(tempKey,()=>renderBatteryData(document.querySelector(".renderCurrentData")));
+                        break;
+
+                        default:
+                            return;
                     }
 
                     

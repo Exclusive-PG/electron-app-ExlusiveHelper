@@ -340,14 +340,17 @@ background: #F8463E;
 //     margin-bottom: 20px;
 //   }
 // }
-.content_cores , .content_network{
+.content_cores , .content_network, .content_printer,.content_audio,.content_bluetooth,.content_wifi,.content_usb{
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
 
-.content_cores ,.content_network{
+
+
+
+.content_cores ,.content_network , .content_printer, .content_audio,.content_bluetooth,.content_wifi,.content_usb{
   color: #fff;
   max-width: 80%;
   margin: 20px 0 ;
@@ -373,6 +376,8 @@ background: #F8463E;
 
 
 
+
+
 .cores_cpu{
   width: 70%;
 }
@@ -391,7 +396,4 @@ background: #F8463E;
   justify-content: center;
   flex-direction: column;
 }    
-
-
-
 

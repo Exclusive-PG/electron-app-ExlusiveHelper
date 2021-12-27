@@ -80,6 +80,7 @@ export default class OSController{
           //  console.log(this.networkInterfaces);
 
             this.wifiConnections = await si.wifiConnections()
+      
           //  console.log(this.wifiConnections);
              
 
@@ -94,6 +95,7 @@ export default class OSController{
           //  console.log(this.FS)
 
             this.USB = await si.usb();
+
           //  console.log(this.USB)
 
             this.printer = await si.printer();
@@ -105,7 +107,8 @@ export default class OSController{
             this.bluetooth = await si.bluetoothDevices();
           //  console.log(this.bluetooth)
 
-          this.battery = await si.battery();
+            this.battery = await si.battery();
+       
 
         } catch (e) {
             console.log(e)
@@ -122,10 +125,10 @@ export default class OSController{
             {data:this.networkInterfaces,isNotEmpty:this.networkInterfaces.length !== 0 ? true : false,Label:"Network",data_key:"Network"},
 
             {data:this.wifiConnections,isNotEmpty:this.wifiConnections.length !== 0 ? true : false,Label:"Wifi",data_key:"Wifi"},
-                     
-            {data:this.systemInfo,isNotEmpty:this.systemInfo !== null ? true : false,Label:"System",data_key:"System"},         
+               
+            // {data:this.systemInfo,isNotEmpty:this.systemInfo !== null ? true : false,Label:"System",data_key:"System"},         
 
-            {data:this.OS,isNotEmpty:this.OS !== null ? true : false,Label:"OS",data_key:"OS"},         
+            {data:this.OS,isNotEmpty:this.OS !== null ? true : false,Label:"System",data_key:"System"},         
 
             {data:this.FS,isNotEmpty:this.FS.length  !== 0 ? true : false,Label:"FS",data_key:"FS"},             
                       

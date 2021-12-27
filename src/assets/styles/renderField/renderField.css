@@ -220,4 +220,39 @@
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
+
+.system_render_data_wrapper, .grid_data_fs_system, .battery_render_data_wrapper {
+  font-size: 20px;
+  line-height: 30px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (minmax(32vw, 2fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(32vw, 2fr));
+  grid-gap: 50px;
+}
+
+.system_render_data_wrapper div, .grid_data_fs_system div, .battery_render_data_wrapper div {
+  background-color: rgba(238, 45, 53, 0.5);
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.name_os_system {
+  margin-bottom: 100px;
+}
+
+.device_fs {
+  margin-bottom: 100px;
+}
+
+.wrapper_card_printer, .wrapper_card_audio, .wrapper_card_wifi, .wrapper_card_usb {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(40%, 2fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(40%, 2fr));
+  grid-gap: 30px;
+}
 /*# sourceMappingURL=renderField.css.map */

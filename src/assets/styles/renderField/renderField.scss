@@ -189,3 +189,46 @@ width: 70%;
 }
 
 
+.system_render_data_wrapper,.grid_data_fs_system ,.battery_render_data_wrapper{
+    font-size: 20px;
+    line-height: 30px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(32vw, 2fr));
+    grid-gap: 50px;
+    
+    div{
+        background-color: rgba(#EE2D35, 0.5);
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+}
+
+
+
+
+
+
+
+.name_os_system{
+margin-bottom: 100px;
+}
+
+
+
+
+///FS
+
+.device_fs{
+    margin-bottom: 100px;
+}
+
+//printer
+
+.wrapper_card_printer,.wrapper_card_audio,.wrapper_card_wifi,.wrapper_card_usb{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40%, 2fr));
+    grid-gap: 30px;
+}
+
+
